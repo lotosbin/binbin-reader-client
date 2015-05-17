@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-cn" ng-app="myapp">
+  <head>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/css/index.css">
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="livereload.js"></script>
+    <script src="public/js/controllers.js"></script>
+  </head>
+  <body ng-controller="feedCtrl">
+    <div class="row top">
+      <form>
+        <div class="col-sm-10">
+          <input type="text" ng-model="url" class="form-control">
+        </div>
+        <div class="col-sm-2">
+          <button type="button" ng-click="add()" class="btn btn-default pull-right">add</button>
+        </div>
+      </form>
+    </div>
+    <p></p>
+    <div class="row vcenter">
+      <div class="col-sm-2 fill">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="list-group">
+              <div ng-repeat="f in feeds" ng-click="select(f)" class="list-group-item">
+                <p ng-bind="f.title" title="{{f.url}}"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-10 fill">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h2 ng-bind="detail.title"></h2><small><span ng-bind="detail.url"></span></small>
+          </div>
+          <div class="panel-body">
+            <button type="button" ng-click="select(detail)" class="btn btn-primary">refresh</button>
+            <div class="list-group">
+              <div ng-repeat="item in detailfeed" class="list-group-item">
+                <p ng-bind="item.title"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row bottom">
+      <center>
+        <p>copyright(c)2015</p>
+      </center>
+    </div>
+  </body>
+</html>
