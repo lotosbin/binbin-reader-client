@@ -1,7 +1,7 @@
 var app, config;
 
 config = {
-  host: 'http://readerapi.binbinsoft.com',
+  host: 'http://localhost:21712',
   test: ''
 };
 

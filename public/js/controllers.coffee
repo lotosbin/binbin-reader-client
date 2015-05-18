@@ -1,5 +1,6 @@
 config =
-  host : 'http://readerapi.binbinsoft.com'
+  # host : 'http://readerapi.binbinsoft.com'
+  host : 'http://localhost:21712'
   test : ''
 app = angular.module('myapp', [])
 app.controller 'feedCtrl', ($scope, $http) ->
