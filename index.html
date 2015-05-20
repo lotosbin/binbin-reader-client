@@ -21,30 +21,11 @@
     </div>
     <p></p>
     <div class="row vcenter">
-      <div class="col-sm-2 fill">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="list-group">
-              <div ng-repeat="f in feeds" ng-click="select(f)" class="list-group-item">
-                <p ng-bind="f.title" title="{{f.url}}"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-sm-10 fill">
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h2 ng-bind="detail.title"></h2><small><span ng-bind="detail.url"></span></small>
-          </div>
-          <div class="panel-body">
-            <button type="button" ng-click="select(detail)" class="btn btn-primary">refresh</button>
-            <div class="list-group">
-              <div ng-repeat="item in detailfeed" class="list-group-item">
-                <p ng-bind="item.title"></p>
-              </div>
-            </div>
-          </div>
+      <div class="list-group">
+        <div ng-repeat="item in articles" class="list-group-item">
+          <h2 ng-bind="item.title"></h2>
+          <p ng-bind="item.summary"></p>
+          <p ng-bind="item.content"></p>
         </div>
       </div>
     </div>

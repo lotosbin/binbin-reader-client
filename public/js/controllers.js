@@ -8,6 +8,10 @@ config = {
 app = angular.module('myapp', []);
 
 app.controller('feedCtrl', function($scope, $http) {
+  $scope.articles = [];
+  $http.get(config.host + '/articles').success(function(data) {
+    return $scope.articles = data;
+  });
   $scope.feeds = [
     {
       url: 'slkdfjslkd'
@@ -20,7 +24,6 @@ app.controller('feedCtrl', function($scope, $http) {
       $scope.feeds = data;
     });
   };
-  $scope.load();
   $scope.url = 'http://www.cnbeta.cn';
   $scope.$watch('url', function(newValue, oldValue) {
     return $http.get('');

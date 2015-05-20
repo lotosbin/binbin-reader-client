@@ -4,6 +4,9 @@ config =
   test : ''
 app = angular.module('myapp', [])
 app.controller 'feedCtrl', ($scope, $http) ->
+  $scope.articles = [];
+  $http.get(config.host+'/articles').success (data) ->
+    $scope.articles = data
   $scope.feeds = [
     { url: 'slkdfjslkd' }
     { url: 'lsdflskdjf' }
@@ -15,7 +18,7 @@ app.controller 'feedCtrl', ($scope, $http) ->
       return
     return
 
-  $scope.load()
+  # $scope.load()
   $scope.url = 'http://www.cnbeta.cn'
   $scope.$watch 'url',(newValue,oldValue) ->
     $http.get('')
@@ -41,4 +44,5 @@ app.controller 'feedCtrl', ($scope, $http) ->
     return
   $scope.view = (f) ->
     return
+
   return

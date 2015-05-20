@@ -16,23 +16,11 @@ html(lang='zh-cn',ng-app='myapp')
             button.btn.btn-default.pull-right(type='button',ng-click='add()') add
       p
       div.row.vcenter
-        div.col-sm-2.fill
-          div.panel.panel-default
-            div.panel-body
-              div.list-group
-                div.list-group-item(ng-repeat='f in feeds',ng-click='select(f)')
-                  p(ng-bind='f.title',title='{{f.url}}')
-        div.col-sm-10.fill
-          div.panel.panel-primary
-            div.panel-heading
-              h2(ng-bind='detail.title')
-              small
-                span(ng-bind='detail.url')
-            div.panel-body
-              button.btn.btn-primary(type='button',ng-click='select(detail)') refresh
-              div.list-group
-                div.list-group-item(ng-repeat='item in detailfeed')
-                  p(ng-bind='item.title')
+        div.list-group
+          div.list-group-item(ng-repeat='item in articles')
+            h2(ng-bind='item.title')
+            p(ng-bind='item.summary')
+            p(ng-bind='item.content')
       div.row.bottom
         center
           p copyright(c)2015
