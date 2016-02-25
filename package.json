@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "setup": "npm install -g coffee-script coffeelint gulp bower nw",
-    "build": "npm install && gulp",
+    "build": "npm install && bower i && gulp",
     "start": "npm run build && nw . ",
     "test": "gulp test"
   },
