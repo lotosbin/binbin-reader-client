@@ -1,7 +1,7 @@
 var app, config;
 
 config = {
-  host: 'http://localhost:21712',
+  host: 'http://localhost:5000',
   test: ''
 };
 
