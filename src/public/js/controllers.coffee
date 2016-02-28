@@ -2,9 +2,19 @@ config =
   # host : 'http://readerapi.binbinsoft.com'
   host : 'http://localhost:5001'
   test : ''
+fetch = (callback)->
+  spide = require 'rssspider'
+  url = 'http://www.bigertech.com/rss'
+  spide.fetchRss url
+    .then (data)->
+      console.log data
+      callback(data) if callback
 
 app = angular.module('myapp', [])
 app.controller 'feedCtrl', ($scope, $http,$sce) ->
+  fetch (data)->
+    for k,v of data
+      $http.post config.host+'/articles',{thirdId:v.link,title:v.title}
   $scope.articles = [];
   $http.get(config.host+'/articles').success (data) ->
     $scope.articles = data

@@ -1,13 +1,37 @@
-var app, config;
+var app, config, fetch;
 
 config = {
   host: 'http://localhost:5001',
   test: ''
 };
 
+fetch = function(callback) {
+  var spide, url;
+  spide = require('rssspider');
+  url = 'http://www.bigertech.com/rss';
+  return spide.fetchRss(url).then(function(data) {
+    console.log(data);
+    if (callback) {
+      return callback(data);
+    }
+  });
+};
+
 app = angular.module('myapp', []);
 
 app.controller('feedCtrl', function($scope, $http, $sce) {
+  fetch(function(data) {
+    var k, results, v;
+    results = [];
+    for (k in data) {
+      v = data[k];
+      results.push($http.post(config.host + '/articles', {
+        thirdId: v.link,
+        title: v.title
+      }));
+    }
+    return results;
+  });
   $scope.articles = [];
   $http.get(config.host + '/articles').success(function(data) {
     return $scope.articles = data;
