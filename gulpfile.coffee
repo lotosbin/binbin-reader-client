@@ -14,7 +14,7 @@ gulp.task 'package',->
   .pipe(gulp.dest('./dist/'))
 
 gulp.task 'copy', ->
-  return gulp.src('bower_components/**/*.*')
+  return gulp.src('./src/bower_components/**/*.*')
   .pipe(gulp.dest('./dist/bower_components'))
 
 gulp.task 'lint', ->
@@ -41,5 +41,5 @@ gulp.task 'watch', ->
   gulp.watch './src/**/*.coffee',['coffee','copy']
   gulp.watch './src/**/*.jade',['jade']
   gulp.watch './src/**/*.scss',['scss']
-  
+
 gulp.task 'default', ['package','copy','node_modules','coffee','scss','jade']
