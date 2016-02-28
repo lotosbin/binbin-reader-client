@@ -6,7 +6,7 @@
   "scripts": {
     "setup": "npm install -g coffee-script coffeelint gulp bower nw",
     "build": "npm install && bower i && gulp",
-    "start": "npm run build && nw . ",
+    "start": "npm run build && nw ./dist ",
     "test": "gulp test"
   },
   "author": "",
