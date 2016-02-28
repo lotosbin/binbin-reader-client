@@ -19,14 +19,15 @@
         </div>
       </form>
     </div>
-    <p></p>
     <div class="row vcenter">
-      <div class="list-group">
-        <div ng-repeat="item in articles" class="list-group-item">
-          <h2 ng-bind="item.title"></h2>
-          <p ng-bind="item.summary"></p>
-          <p ng-bind="item.content"></p>
+      <div style="overflow-y:scroll" class="list-group col-sm-4">
+        <div ng-repeat="item in articles" ng-click="article_select(item)" class="list-group-item">
+          <h4 ng-bind="item.title"></h4>
         </div>
+      </div>
+      <div class="col-sm-8 fill">
+        <h2 ng-bind="article.title"></h2>
+        <iframe width="100%" nwdisable="true" ng-src="{{trustAsResourceUrl(article.thirdId)}}" seamless frameborder="0" class="fill"></iframe>
       </div>
     </div>
     <div class="row bottom">

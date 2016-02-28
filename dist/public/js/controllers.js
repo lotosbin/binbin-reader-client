@@ -1,13 +1,13 @@
 var app, config;
 
 config = {
-  host: 'http://localhost:5000',
+  host: 'http://localhost:5001',
   test: ''
 };
 
 app = angular.module('myapp', []);
 
-app.controller('feedCtrl', function($scope, $http) {
+app.controller('feedCtrl', function($scope, $http, $sce) {
   $scope.articles = [];
   $http.get(config.host + '/articles').success(function(data) {
     return $scope.articles = data;
@@ -19,6 +19,13 @@ app.controller('feedCtrl', function($scope, $http) {
       url: 'lsdflskdjf'
     }
   ];
+  $scope.trustAsResourceUrl = function(url) {
+    return $sce.trustAsResourceUrl(url);
+  };
+  $scope.article = {};
+  $scope.article_select = function(article) {
+    return $scope.article = article;
+  };
   $scope.load = function() {
     $http.get(config.host + '/feeds').success(function(data) {
       $scope.feeds = data;

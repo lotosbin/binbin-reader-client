@@ -1,9 +1,10 @@
 config =
   # host : 'http://readerapi.binbinsoft.com'
-  host : 'http://localhost:5000'
+  host : 'http://localhost:5001'
   test : ''
+
 app = angular.module('myapp', [])
-app.controller 'feedCtrl', ($scope, $http) ->
+app.controller 'feedCtrl', ($scope, $http,$sce) ->
   $scope.articles = [];
   $http.get(config.host+'/articles').success (data) ->
     $scope.articles = data
@@ -11,12 +12,17 @@ app.controller 'feedCtrl', ($scope, $http) ->
     { url: 'slkdfjslkd' }
     { url: 'lsdflskdjf' }
   ]
-
+  $scope.trustAsResourceUrl = (url)->
+    $sce.trustAsResourceUrl(url)
+  $scope.article = {}
+  $scope.article_select = (article) ->
+    $scope.article = article;
   $scope.load = ->
     $http.get(config.host + '/feeds').success (data) ->
       $scope.feeds = data
       return
     return
+
 
   # $scope.load()
   $scope.url = 'http://www.cnbeta.cn'

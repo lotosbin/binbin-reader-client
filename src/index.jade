@@ -14,13 +14,13 @@ html(lang='zh-cn',ng-app='myapp')
             input.form-control(type='text',ng-model='url')
           div.col-sm-2
             button.btn.btn-default.pull-right(type='button',ng-click='add()') add
-      p
       div.row.vcenter
-        div.list-group
-          div.list-group-item(ng-repeat='item in articles')
-            h2(ng-bind='item.title')
-            p(ng-bind='item.summary')
-            p(ng-bind='item.content')
+        div.list-group.col-sm-4(style='overflow-y:scroll')
+          div.list-group-item(ng-repeat='item in articles',ng-click='article_select(item)')
+            h4(ng-bind='item.title')
+        div.col-sm-8.fill
+            h2(ng-bind='article.title')
+            iframe.fill(width='100%',nwdisable='true',ng-src='{{trustAsResourceUrl(article.thirdId)}}',seamless,frameborder=0)
       div.row.bottom
         center
           p copyright(c)2015

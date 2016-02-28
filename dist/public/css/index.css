@@ -1,0 +1,14 @@
+html, body {
+  height: 100%; }
+
+.top, .bottom {
+  min-height: 10%;
+  height: 10%; }
+
+.vcenter {
+  min-height: 80%;
+  height: 80%; }
+
+.fill {
+  min-height: 100%;
+  height: 100%; }
