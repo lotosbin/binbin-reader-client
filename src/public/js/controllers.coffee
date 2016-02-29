@@ -12,12 +12,17 @@ fetch = (callback)->
 
 app = angular.module('myapp', [])
 app.controller 'feedCtrl', ($scope, $http,$sce) ->
+  $scope.config = config;
+  $scope.save_config = ->
+    $scope.articles_reload()
   fetch (data)->
     for k,v of data
       $http.post config.host+'/articles',{thirdId:v.link,title:v.title}
-  $scope.articles = [];
-  $http.get(config.host+'/articles').success (data) ->
-    $scope.articles = data
+  $scope.articles_reload = ->
+    $scope.articles = [];
+    $http.get(config.host+'/articles').success (data) ->
+      $scope.articles = data
+  $scope.articles_reload()
   $scope.feeds = [
     { url: 'slkdfjslkd' }
     { url: 'lsdflskdjf' }

@@ -17,6 +17,11 @@
         <div class="col-sm-2">
           <button type="button" ng-click="add()" class="btn btn-default pull-right">add</button>
         </div>
+        <div class="col-sm-12">
+          <label>api host</label>
+          <input ng-model="config.host"><span ng-bind="config.host"></span>
+          <button ng-click="save_config()">save</button>
+        </div>
       </form>
     </div>
     <div class="row vcenter">

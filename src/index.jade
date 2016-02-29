@@ -14,6 +14,11 @@ html(lang='zh-cn',ng-app='myapp')
             input.form-control(type='text',ng-model='url')
           div.col-sm-2
             button.btn.btn-default.pull-right(type='button',ng-click='add()') add
+          .col-sm-12
+            label api host
+            input(ng-model='config.host')
+            span(ng-bind='config.host')
+            button(ng-click='save_config()') save
       div.row.vcenter
         div.col-sm-4.fill
           div.list-group.fill(style='overflow-y:auto')

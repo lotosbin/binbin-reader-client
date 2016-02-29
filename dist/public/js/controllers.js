@@ -20,6 +20,10 @@ fetch = function(callback) {
 app = angular.module('myapp', []);
 
 app.controller('feedCtrl', function($scope, $http, $sce) {
+  $scope.config = config;
+  $scope.save_config = function() {
+    return $scope.articles_reload();
+  };
   fetch(function(data) {
     var k, results, v;
     results = [];
@@ -32,10 +36,13 @@ app.controller('feedCtrl', function($scope, $http, $sce) {
     }
     return results;
   });
-  $scope.articles = [];
-  $http.get(config.host + '/articles').success(function(data) {
-    return $scope.articles = data;
-  });
+  $scope.articles_reload = function() {
+    $scope.articles = [];
+    return $http.get(config.host + '/articles').success(function(data) {
+      return $scope.articles = data;
+    });
+  };
+  $scope.articles_reload();
   $scope.feeds = [
     {
       url: 'slkdfjslkd'
