@@ -19,13 +19,17 @@
         </div>
         <div class="col-sm-12">
           <label>api host</label>
-          <input ng-model="config.host"><span ng-bind="config.host"></span>
+          <input ng-model="config.host">
           <button ng-click="save_config()">save</button>
+          <button ng-click="load_config()">load</button>
         </div>
       </form>
     </div>
     <div class="row vcenter">
       <div class="col-sm-4 fill">
+        <div>
+          <button ng-click="articles_reload()">refresh</button>
+        </div>
         <div style="overflow-y:auto" class="list-group fill">
           <div ng-repeat="item in articles" ng-click="article_select(item)" class="list-group-item">
             <h4 ng-bind="item.title"></h4>

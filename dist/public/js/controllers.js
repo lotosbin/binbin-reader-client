@@ -22,8 +22,14 @@ app = angular.module('myapp', []);
 app.controller('feedCtrl', function($scope, $http, $sce) {
   $scope.config = config;
   $scope.save_config = function() {
-    return $scope.articles_reload();
+    return localStorage.config_host = $scope.config.host;
   };
+  $scope.load_config = function() {
+    if (localStorage.config_host) {
+      return $scope.config.host = localStorage.config_host;
+    }
+  };
+  $scope.load_config();
   fetch(function(data) {
     var k, results, v;
     results = [];
