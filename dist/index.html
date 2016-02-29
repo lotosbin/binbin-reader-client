@@ -31,7 +31,7 @@
           <button ng-click="articles_reload()">refresh</button>
         </div>
         <div style="overflow-y:auto" class="list-group fill">
-          <div ng-repeat="item in articles" ng-click="article_select(item)" class="list-group-item">
+          <div ng-repeat="item in articles" ng-click="article_select(item)" title="{{item.lastUpdatedTime}}" class="list-group-item">
             <h4 ng-bind="item.title"></h4>
           </div>
         </div>
