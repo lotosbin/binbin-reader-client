@@ -1,9 +1,4 @@
-var app, config, fetch;
-
-config = {
-  host: 'http://localhost:5001',
-  test: ''
-};
+var app, fetch;
 
 fetch = function(callback) {
   var spide, url;
@@ -17,13 +12,10 @@ fetch = function(callback) {
   });
 };
 
-app = angular.module('myapp', []);
+app = angular.module('myapp', ['ngRoute']);
 
 app.controller('feedCtrl', function($scope, $http, $sce) {
   $scope.config = config;
-  $scope.save_config = function() {
-    return localStorage.config_host = $scope.config.host;
-  };
   $scope.load_config = function() {
     if (localStorage.config_host) {
       return $scope.config.host = localStorage.config_host;
@@ -96,4 +88,31 @@ app.controller('feedCtrl', function($scope, $http, $sce) {
     });
   };
   $scope.view = function(f) {};
+});
+
+app.controller('settingsController', function($scope) {
+  $scope.config = config;
+  $scope.save_config = function() {
+    return localStorage.config_host = $scope.config.host;
+  };
+  $scope.load_config = function() {
+    if (localStorage.config_host) {
+      return $scope.config.host = localStorage.config_host;
+    }
+  };
+  return $scope.load_config();
+});
+
+app.config(function($routeProvider, $locationProvider) {
+  $routeProvider.when('/settings', {
+    templateUrl: './settings.html',
+    controller: 'settingsController'
+  });
+  $routeProvider.when('/', {
+    templateUrl: './home.html',
+    controller: 'feedCtrl'
+  });
+  return $routeProvider.otherwise({
+    redirectTo: '/'
+  });
 });

@@ -1,0 +1,20 @@
+h1 home
+div.row.top
+  form
+    div.col-sm-10
+      input.form-control(type='text',ng-model='url')
+    div.col-sm-2
+      button.btn.btn-default.pull-right(type='button',ng-click='add()') add
+div.row.vcenter
+  div.col-sm-4.fill
+    div
+      button(ng-click='articles_reload()') refresh
+    div.list-group.fill(style='overflow-y:auto')
+      div.list-group-item(ng-repeat='item in articles',ng-click='article_select(item)',title='{{item.lastUpdatedTime}}')
+        h4(ng-bind='item.title')
+    div
+      center
+        p copyright(c)2015
+  div.col-sm-8.fill
+      h2(ng-bind='article.title')
+      iframe.fill(width='100%',nwdisable='true',ng-src='{{trustAsResourceUrl(article.thirdId)}}',seamless,frameborder=0)

@@ -1,8 +1,3 @@
-config =
-  # host : 'http://readerapi.binbinsoft.com'
-  host : 'http://localhost:5001'
-  test : ''
-
 fetch = (callback)->
   spide = require 'rssspider'
   url = 'http://www.bigertech.com/rss'
@@ -11,16 +6,13 @@ fetch = (callback)->
       console.log data
       callback(data) if callback
 
-app = angular.module('myapp', [])
+app = angular.module('myapp', ['ngRoute'])
 app.controller 'feedCtrl', ($scope, $http,$sce) ->
   $scope.config = config
-  $scope.save_config = ->
-    localStorage.config_host = $scope.config.host
-
   $scope.load_config = ->
     $scope.config.host = localStorage.config_host if localStorage.config_host
   $scope.load_config()
-  
+
   fetch (data)->
     for k,v of data
       $http.post config.host+'/articles',{thirdId:v.link,title:v.title}
@@ -74,3 +66,23 @@ app.controller 'feedCtrl', ($scope, $http,$sce) ->
     return
 
   return
+
+app.controller 'settingsController',($scope)->
+  $scope.config = config
+  $scope.save_config = ->
+    localStorage.config_host = $scope.config.host
+
+  $scope.load_config = ->
+    $scope.config.host = localStorage.config_host if localStorage.config_host
+  $scope.load_config()
+
+app.config ($routeProvider, $locationProvider)->
+  $routeProvider.when('/settings',{
+    templateUrl : './settings.html'
+    controller  : 'settingsController'
+  })
+  $routeProvider.when('/',{
+    templateUrl : './home.html'
+    controller  : 'feedCtrl'
+  })
+  $routeProvider.otherwise({redirectTo: '/'})

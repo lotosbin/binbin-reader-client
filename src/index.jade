@@ -5,31 +5,19 @@ html(lang='zh-cn',ng-app='myapp')
         link(rel='stylesheet',href='public/css/index.css')
         script(src='bower_components/jquery/dist/jquery.min.js')
         script(src='bower_components/angular/angular.min.js')
+        script(src='bower_components/angular-route/angular-route.min.js')
         script(src='bower_components/ngstorage/ngStorage.min.js')
+        script(src='public/js/config.js')
         script(src='public/js/controllers.js')
-        //- script(src='livereload.js')
-    body.container-fluid(ng-controller='feedCtrl')
-      div.row.top
-        form
-          div.col-sm-10
-            input.form-control(type='text',ng-model='url')
-          div.col-sm-2
-            button.btn.btn-default.pull-right(type='button',ng-click='add()') add
-          .col-sm-12
-            label api host
-            input(ng-model='config.host')
-            button(ng-click='save_config()') save
-            button(ng-click='load_config()') load
-      div.row.vcenter
-        div.col-sm-4.fill
-          div
-            button(ng-click='articles_reload()') refresh
-          div.list-group.fill(style='overflow-y:auto')
-            div.list-group-item(ng-repeat='item in articles',ng-click='article_select(item)',title='{{item.lastUpdatedTime}}')
-              h4(ng-bind='item.title')
-          div
-            center
-              p copyright(c)2015
-        div.col-sm-8.fill
-            h2(ng-bind='article.title')
-            iframe.fill(width='100%',nwdisable='true',ng-src='{{trustAsResourceUrl(article.thirdId)}}',seamless,frameborder=0)
+        script(src='livereload.js')
+        style
+          |body { padding-top: 70px; }
+    body.container-fluid
+      .navbar.navbar-default.navbar-fixed-top
+          ul.nav.navbar-nav
+            li
+              a(href='#/') Home
+            li
+              a(href='#/settings') Settings
+      div(ng-view)
+      
