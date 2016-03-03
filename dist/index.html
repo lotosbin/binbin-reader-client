@@ -13,12 +13,14 @@
     <style>body { padding-top: 70px; }</style>
   </head>
   <body class="container-fluid">
-    <div class="navbar navbar-default navbar-fixed-top">
-      <ul class="nav navbar-nav">
+    <div class="top navbar navbar-default navbar-fixed-top">
+      <ul class="nav navbar-nav navbar-left">
         <li><a href="#/">Home</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
         <li><a href="#/settings">Settings</a></li>
       </ul>
     </div>
-    <div ng-view></div>
+    <div ng-view class="vcenter"></div>
   </body>
 </html>

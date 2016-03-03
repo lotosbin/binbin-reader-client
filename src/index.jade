@@ -13,11 +13,12 @@ html(lang='zh-cn',ng-app='myapp')
         style
           |body { padding-top: 70px; }
     body.container-fluid
-      .navbar.navbar-default.navbar-fixed-top
-          ul.nav.navbar-nav
+      div.top.navbar.navbar-default.navbar-fixed-top
+          ul.nav.navbar-nav.navbar-left
             li
               a(href='#/') Home
+          ul.nav.navbar-nav.navbar-right
             li
               a(href='#/settings') Settings
-      div(ng-view)
+      div.vcenter(ng-view)
       

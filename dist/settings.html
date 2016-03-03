@@ -1,8 +1,19 @@
 
 <h1>settings</h1>
 <div class="col-sm-12">
-  <label>api host</label>
-  <input ng-model="config.host"/>
-  <button ng-click="save_config()">save</button>
-  <button ng-click="load_config()">load</button>
+  <form class="form">
+    <div class="form-group">
+      <div class="col-sm-2">
+        <label class="control-label">api host</label>
+      </div>
+      <div class="col-sm-10">
+        <input ng-model="config.host" class="form-control"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-10 col-sm-offset-2">
+        <button ng-click="save_config()" class="btn btn-primary">save</button>
+      </div>
+    </div>
+  </form>
 </div>
